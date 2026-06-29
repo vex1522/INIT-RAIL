@@ -1,13 +1,11 @@
 # INIT/RAIL 
-> **Hackathon Set A Solution: Local Train Traffic Analysis**
+
 
 **INIT/RAIL** is a Python-based interactive analytical dashboard built to analyze 3 years of suburban train ridership data across 50 routes in the Chennai metropolitan area. It provides rail planners with actionable insights into peak loads, anomaly detection, route efficiency, and station congestion to optimize scheduling.
 
 ##  Live Application
 The application is deployed and currently live on Render:
-**[Insert Your Render URL Here]**
-
-*(Note: As this is hosted on a free tier, the initial load may take 30-50 seconds if the server has gone to sleep from inactivity. Subsequent navigation is instant).*
+**https://init-rail.onrender.com/**
 
 ##  Key Features
 * **Automated ETL Pipeline:** Robust data cleaning that handles missing values, string garbage coercion, sentinel value replacement, and outlier capping using `pandas`.
@@ -24,10 +22,13 @@ The application is deployed and currently live on Render:
 * **Frontend:** HTML5, CSS3 (Custom Dark Theme), Vanilla JavaScript
 * **Deployment:** Render (Platform as a Service)
 
+<img width="785" height="783" alt="arch diag (1)" src="https://github.com/user-attachments/assets/66f9115f-bed5-4e46-9a30-815f44321b8c" />
+
+
 ##  Project Structure
 
 ```text
-Team_SetA/
+/
 │
 ├── app.py                      # Main Flask application and route definitions
 ├── requirements.txt            # Python dependencies (includes gunicorn for deployment)
@@ -54,34 +55,9 @@ Team_SetA/
     ├── dashboard.html          # KPI tiles, Plotly tabs, and Query Explorer
     └── map.html                # Full-screen Folium map rendering
 
+```
 
 
- Local Setup and Installation
-1. Clone the repository:
 
-Bash
-git clone [https://github.com/YourUsername/init-rail.git](https://github.com/YourUsername/init-rail.git)
-cd init-rail
-2. Create and activate a virtual environment:
 
-Bash
-# On Windows
-python -m venv venv
-venv\Scripts\activate
-
-# On macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-3. Install dependencies:
-
-Bash
-pip install -r requirements.txt
-4. Run the ETL Pipeline (Optional if cleaned data is provided):
-
-Bash
-python tasks/task1_cleaning.py
-5. Start the Flask Server:
-
-Bash
-flask run
 Navigate to http://127.0.0.1:5000 in your browser to view the application locally.
