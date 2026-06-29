@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="section-head mb-3">
+  <div>
+    <p class="section-kicker">Geospatial View</p>
+    <h2 class="section-title">Interactive Zone Map</h2>
+  </div>
+</div>
+{% if map_exists %}
+<div class="map-shell">
+  <iframe src="/outputs/railway_mobility_map.html" class="map-frame"></iframe>
+</div>
+{% else %}
+<div class="alert alert-warning">Map not generated yet. Run the pipeline first.</div>
+{% endif %}
+{% endblock %}

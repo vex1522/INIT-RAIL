@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<video class="landing-video" autoplay loop muted playsinline>
+  <source src="/static/video/train_bg.mp4" type="video/mp4">
+</video>
+<section class="landing-shell">
+  <div class="landing-header">
+    <p class="eyebrow">INIT/RAIL PLATFORM</p>
+    <h1 class="landing-title">INIT/RAIL</h1>
+    <p class="landing-subtitle">Direct access to analytics and geospatial monitoring through live preview panels.</p>
+  </div>
+  <div class="overview-grid mb-4">
+    <div class="overview-card">
+      <div class="overview-value">2,115,105</div>
+      <div class="overview-label">Total Passengers</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-value">12.10</div>
+      <div class="overview-label">Average Delay</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-value">50</div>
+      <div class="overview-label">Routes</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-value">5</div>
+      <div class="overview-label">Zones</div>
+    </div>
+  </div>
+  <div class="preview-grid">
+    <a class="preview-card" href="/dashboard" aria-label="Open InitRail Dashboard">
+      <div class="preview-card__meta">
+        <span class="preview-card__eyebrow">Analytics</span>
+        <h2>Dashboard</h2>
+        <p>Passenger flow, delay patterns, and route efficiency in one operational view.</p>
+      </div>
+      <div class="preview-frame">
+        <iframe src="/dashboard" title="Dashboard preview" tabindex="-1" loading="lazy"></iframe>
+      </div>
+    </a>
+    <a class="preview-card" href="/map" aria-label="Open InitRail Zone Map">
+      <div class="preview-card__meta">
+        <span class="preview-card__eyebrow">Geospatial</span>
+        <h2>Zone Map</h2>
+        <p>Regional coverage, zone performance, and live spatial context through a scaled preview.</p>
+      </div>
+      <div class="preview-frame">
+        <iframe src="/map" title="Zone map preview" tabindex="-1" loading="lazy"></iframe>
+      </div>
+    </a>
+  </div>
+</section>
+{% endblock %}

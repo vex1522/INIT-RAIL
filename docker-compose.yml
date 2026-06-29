@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    container_name: chennai_rail_dashboard
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./data:/app/data
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped

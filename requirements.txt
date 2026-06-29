@@ -1,0 +1,7 @@
+flask==3.0.3
+pandas==2.2.2
+numpy==1.26.4
+matplotlib==3.8.4
+folium==0.16.0
+gunicorn==22.0.0
+plotly==5.22.0

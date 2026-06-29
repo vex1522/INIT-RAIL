@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-2" style="color:var(--accent)">Data Query Explorer</h2>
+  <p class="mb-4" style="color:var(--text-muted)">
+    Select a pre-built query or ask your own question about the ridership dataset.
+  </p>
+
+  <div class="card p-4 mb-4">
+    <label class="form-label fw-bold">Choose a preset query</label>
+    <div class="input-group mb-3">
+      <select id="preset-query" class="form-select">
+        <option value="">- Select a question -</option>
+        <option value="avg_load_crossings">What is the average passenger load for manned vs. unmanned crossings?</option>
+        <option value="high_peak_zones">Which zones experience the highest frequency of 'High' peak loads?</option>
+        <option value="top_ratio_routes">What are the top 5 routes with the highest passenger-to-delay ratio?</option>
+        <option value="low_peak_high_delay">Which routes have consistently 'Low' peak loads but still experience high delays?</option>
+        <option value="crossing_volume_distribution">What is the total passenger volume distribution across different crossing types?</option>
+        <option value="weekend_vs_weekday_delays">Are weekend delays significantly different from weekday delays?</option>
+        <option value="top_dates_volume">Which 5 specific dates had the highest total passenger volume across all routes?</option>
+        <option value="efficiency_by_day">How does the efficiency score fluctuate across different days of the week?</option>
+        <option value="high_peak_month">What time of year (or month) sees the highest spike in 'High' peak load occurrences?</option>
+        <option value="tambaram_vs_beach">How does the average delay in the Tambaram zone compare to the Beach zone?</option>
+        <option value="egmore_delay_percent">What percentage of trains in the Egmore zone experience delays over 15 minutes?</option>
+        <option value="zone_efficiency">What is the overall average efficiency score for each railway zone?</option>
+        <option value="route_passenger_variance">Which routes have the highest variance (unpredictability) in daily passenger counts?</option>
+        <option value="avadi_drag_routes">Are there specific routes that drag down the average efficiency score of the Avadi zone?</option>
+        <option value="unmanned_delay_correlation">Is there a correlation between 'Unmanned' crossing types and higher average delays?</option>
+        <option value="best_zone_balance">Which zone has the best balance of high passenger volume and low delay?</option>
+        <option value="semi_manned_high_peak">Do routes with 'Semi-manned' crossings experience more 'High' peak loads?</option>
+      </select>
+      <button class="btn btn-accent" onclick="runPresetQuery()">Run</button>
+    </div>
+
+    <label class="form-label fw-bold">Or type a custom filter</label>
+    <div class="input-group">
+      <input
+        id="custom-query"
+        type="text"
+        class="form-control"
+        placeholder="e.g. zone == 'Tambaram' and passengers > 3000">
+      <button class="btn btn-accent-soft" onclick="runCustomQuery()">Filter</button>
+    </div>
+    <small style="color:var(--text-muted)">
+      Supported fields: route_id, zone, peak_load, crossing_type, day_of_week, passengers, delay_min
+    </small>
+  </div>
+
+  <div id="query-result" class="card p-4" style="display:none">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 id="result-title" style="color:var(--accent);margin:0">Results</h5>
+      <span id="result-count" class="badge" style="background:var(--accent-soft);color:var(--text)"></span>
+    </div>
+
+    <div id="result-chart-wrap" style="display:none;margin-bottom:1rem">
+      <iframe id="result-chart" style="width:100%;height:360px;border:none;border-radius:8px"></iframe>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle" id="result-table">
+        <thead id="result-thead"></thead>
+        <tbody id="result-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="query-loading" style="display:none" class="text-center py-4">
+    <div class="spinner-border" style="color:var(--accent)"></div>
+    <p class="mt-2" style="color:var(--text-muted)">Running query...</p>
+  </div>
+</div>
+{% endblock %}
